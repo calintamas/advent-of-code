@@ -7,9 +7,7 @@
 
 import Foundation
 
-protocol AdventDay {
-    var input: String { get }
-    
+protocol AdventDay {    
     init(input: String)
 
     func p1() -> String
@@ -27,7 +25,11 @@ func main() {
         fatalError("could not read input file at \(path)")
     }
     
-    print(input)
+    let day = Day01(input: input)
+    let res1 = day.p1()
+    print("p1 \(res1)")
+    let res2 = day.p2()
+    print("p2 \(res2)")
 }
 
 main()

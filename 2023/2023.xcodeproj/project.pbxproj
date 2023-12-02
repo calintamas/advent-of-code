@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		FE9097622B19D32800F442F6 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9097612B19D32700F442F6 /* main.swift */; };
+		FE9097642B19D5E900F442F6 /* Day01.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9097632B19D5E900F442F6 /* Day01.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,6 +27,7 @@
 		FE9097532B19C58600F442F6 /* 2023 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = 2023; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE90975E2B19C7F400F442F6 /* day01.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = day01.txt; sourceTree = SOURCE_ROOT; };
 		FE9097612B19D32700F442F6 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = SOURCE_ROOT; };
+		FE9097632B19D5E900F442F6 /* Day01.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day01.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,7 +44,9 @@
 		FE90974A2B19C58600F442F6 = {
 			isa = PBXGroup;
 			children = (
-				FE9097552B19C58600F442F6 /* 2023 */,
+				FE9097632B19D5E900F442F6 /* Day01.swift */,
+				FE90975E2B19C7F400F442F6 /* day01.txt */,
+				FE9097612B19D32700F442F6 /* main.swift */,
 				FE9097542B19C58600F442F6 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -53,15 +57,6 @@
 				FE9097532B19C58600F442F6 /* 2023 */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		FE9097552B19C58600F442F6 /* 2023 */ = {
-			isa = PBXGroup;
-			children = (
-				FE90975E2B19C7F400F442F6 /* day01.txt */,
-				FE9097612B19D32700F442F6 /* main.swift */,
-			);
-			path = 2023;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -124,6 +119,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FE9097622B19D32800F442F6 /* main.swift in Sources */,
+				FE9097642B19D5E900F442F6 /* Day01.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
