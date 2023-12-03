@@ -11,7 +11,7 @@ struct Day01: AdventDay {
     let lines: Array<String>
     
     init(input: String) {
-        self.lines = input.components(separatedBy: "\n").filter({ !$0.isEmpty })
+        self.lines = input.splitByLine()
     }
     
     func calibrationValueFor(line: String) -> Int {
@@ -43,11 +43,5 @@ struct Day01: AdventDay {
         }
         let sum = values.sum()
         return "\(sum)"
-    }
-}
-
-extension [Int] {
-    func sum() -> Int {
-        return self.reduce(0, +)
     }
 }

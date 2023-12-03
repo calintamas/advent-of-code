@@ -10,8 +10,8 @@ import Foundation
 protocol AdventDay {    
     init(input: String)
 
-    func p1() -> String
-    func p2() -> String
+    mutating func p1() -> String
+    mutating func p2() -> String
 }
 
 func main() {
@@ -25,7 +25,7 @@ func main() {
         fatalError("could not read input file at \(path)")
     }
     
-    let day = Day01(input: input)
+    var day = Day02(input: input)
     let res1 = day.p1()
     print("p1 \(res1)")
     let res2 = day.p2()
