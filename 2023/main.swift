@@ -25,7 +25,7 @@ func main() {
         fatalError("could not read input file at \(path)")
     }
     
-    var day = Day03(input: input)
+    var day = Day04(input: input)
     let res1 = day.p1()
     print("p1 \(res1)")
     let res2 = day.p2()

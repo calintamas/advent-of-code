@@ -15,6 +15,7 @@
 		FEED82622B1DFD3800317775 /* Day04.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEED82612B1DFD3800317775 /* Day04.swift */; };
 		FEED82822B1E018700317775 /* ArrayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEED82772B1DFEF000317775 /* ArrayTests.swift */; };
 		FEED82832B1E019100317775 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB36F7B2B1C8081007F5C9A /* Array.swift */; };
+		FEED82852B1E07C900317775 /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEED82842B1E07C900317775 /* Int.swift */; };
 		FEF5538F2B1CDC5F00143750 /* Day03.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEF5538E2B1CDC5F00143750 /* Day03.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,7 @@
 		FEED82632B1DFD5300317775 /* day04.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = day04.txt; sourceTree = "<group>"; };
 		FEED82752B1DFEF000317775 /* test.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = test.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEED82772B1DFEF000317775 /* ArrayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayTests.swift; sourceTree = "<group>"; };
+		FEED82842B1E07C900317775 /* Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
 		FEF5538E2B1CDC5F00143750 /* Day03.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day03.swift; sourceTree = "<group>"; };
 		FEF553912B1CDC7F00143750 /* day03.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = day03.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -97,6 +99,7 @@
 			children = (
 				FEB36F792B1C803F007F5C9A /* String.swift */,
 				FEB36F7B2B1C8081007F5C9A /* Array.swift */,
+				FEED82842B1E07C900317775 /* Int.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -206,6 +209,7 @@
 				FEED82622B1DFD3800317775 /* Day04.swift in Sources */,
 				FEB36F772B1C7EC3007F5C9A /* Day02.swift in Sources */,
 				FEF5538F2B1CDC5F00143750 /* Day03.swift in Sources */,
+				FEED82852B1E07C900317775 /* Int.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,6 +12,14 @@ extension String {
         self.components(separatedBy: "\n").filter({ !$0.isEmpty })
     }
     
+    func trim() -> String {
+        self.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+    
+    func toInt() -> Int {
+        Int(self)!
+    }
+    
     subscript(index: Int) -> Character? {
         guard index >= 0, index < count else {
             return nil // Return nil for out-of-bounds access
