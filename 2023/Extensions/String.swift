@@ -11,4 +11,11 @@ extension String {
     func splitByLine() -> [String] {
         self.components(separatedBy: "\n").filter({ !$0.isEmpty })
     }
+    
+    subscript(index: Int) -> Character? {
+        guard index >= 0, index < count else {
+            return nil // Return nil for out-of-bounds access
+        }
+        return self[self.index(self.startIndex, offsetBy: index)]
+    }
 }

@@ -12,6 +12,7 @@
 		FEB36F772B1C7EC3007F5C9A /* Day02.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB36F762B1C7EC3007F5C9A /* Day02.swift */; };
 		FEB36F7A2B1C803F007F5C9A /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB36F792B1C803F007F5C9A /* String.swift */; };
 		FEB36F7C2B1C8081007F5C9A /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB36F7B2B1C8081007F5C9A /* Array.swift */; };
+		FEF5538F2B1CDC5F00143750 /* Day03.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEF5538E2B1CDC5F00143750 /* Day03.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -35,6 +36,8 @@
 		FEB36F792B1C803F007F5C9A /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		FEB36F7B2B1C8081007F5C9A /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		FEB36F7D2B1C80E4007F5C9A /* day02.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = day02.txt; sourceTree = "<group>"; };
+		FEF5538E2B1CDC5F00143750 /* Day03.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day03.swift; sourceTree = "<group>"; };
+		FEF553912B1CDC7F00143750 /* day03.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = day03.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,8 +57,10 @@
 				FEB36F782B1C7EE2007F5C9A /* Extensions */,
 				FE9097632B19D5E900F442F6 /* Day01.swift */,
 				FEB36F762B1C7EC3007F5C9A /* Day02.swift */,
+				FEF5538E2B1CDC5F00143750 /* Day03.swift */,
 				FE90975E2B19C7F400F442F6 /* day01.txt */,
 				FEB36F7D2B1C80E4007F5C9A /* day02.txt */,
+				FEF553912B1CDC7F00143750 /* day03.txt */,
 				FE9097612B19D32700F442F6 /* main.swift */,
 				FE9097542B19C58600F442F6 /* Products */,
 			);
@@ -142,6 +147,7 @@
 				FE9097642B19D5E900F442F6 /* Day01.swift in Sources */,
 				FEB36F7A2B1C803F007F5C9A /* String.swift in Sources */,
 				FEB36F772B1C7EC3007F5C9A /* Day02.swift in Sources */,
+				FEF5538F2B1CDC5F00143750 /* Day03.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
