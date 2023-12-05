@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FE13C84E2B1F336400820966 /* Day05.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE13C84D2B1F336400820966 /* Day05.swift */; };
 		FE9097622B19D32800F442F6 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9097612B19D32700F442F6 /* main.swift */; };
 		FE9097642B19D5E900F442F6 /* Day01.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9097632B19D5E900F442F6 /* Day01.swift */; };
 		FEB36F772B1C7EC3007F5C9A /* Day02.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB36F762B1C7EC3007F5C9A /* Day02.swift */; };
@@ -32,6 +33,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		FE13C84D2B1F336400820966 /* Day05.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day05.swift; sourceTree = "<group>"; };
+		FE13C84F2B1F336D00820966 /* day05.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = day05.txt; sourceTree = "<group>"; };
+		FE13C8502B1F341500820966 /* scratchpad.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = scratchpad.txt; sourceTree = "<group>"; };
 		FE9097532B19C58600F442F6 /* 2023 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = 2023; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE90975E2B19C7F400F442F6 /* day01.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = day01.txt; sourceTree = SOURCE_ROOT; };
 		FE9097612B19D32700F442F6 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = SOURCE_ROOT; };
@@ -75,10 +79,13 @@
 				FEB36F762B1C7EC3007F5C9A /* Day02.swift */,
 				FEF5538E2B1CDC5F00143750 /* Day03.swift */,
 				FEED82612B1DFD3800317775 /* Day04.swift */,
+				FE13C84D2B1F336400820966 /* Day05.swift */,
 				FE90975E2B19C7F400F442F6 /* day01.txt */,
 				FEB36F7D2B1C80E4007F5C9A /* day02.txt */,
 				FEF553912B1CDC7F00143750 /* day03.txt */,
 				FEED82632B1DFD5300317775 /* day04.txt */,
+				FE13C84F2B1F336D00820966 /* day05.txt */,
+				FE13C8502B1F341500820966 /* scratchpad.txt */,
 				FE9097612B19D32700F442F6 /* main.swift */,
 				FEED82762B1DFEF000317775 /* test */,
 				FE9097542B19C58600F442F6 /* Products */,
@@ -207,6 +214,7 @@
 				FE9097642B19D5E900F442F6 /* Day01.swift in Sources */,
 				FEB36F7A2B1C803F007F5C9A /* String.swift in Sources */,
 				FEED82622B1DFD3800317775 /* Day04.swift in Sources */,
+				FE13C84E2B1F336400820966 /* Day05.swift in Sources */,
 				FEB36F772B1C7EC3007F5C9A /* Day02.swift in Sources */,
 				FEF5538F2B1CDC5F00143750 /* Day03.swift in Sources */,
 				FEED82852B1E07C900317775 /* Int.swift in Sources */,

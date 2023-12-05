@@ -12,6 +12,10 @@ extension String {
         self.components(separatedBy: "\n").filter({ !$0.isEmpty })
     }
     
+    func splitByWhiteSpace() -> [String] {
+        self.components(separatedBy: " ").filter({ !$0.isEmpty })
+    }
+    
     func trim() -> String {
         self.trimmingCharacters(in: .whitespacesAndNewlines)
     }
