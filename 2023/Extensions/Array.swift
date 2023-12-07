@@ -22,3 +22,19 @@ extension Array {
         indices.contains(index) ? self[index] : nil
     }
 }
+
+extension [Character: Int] {
+    mutating func seen(char: Character) {
+        if let val = self[char] {
+            self[char] = val + 1
+        } else {
+            self[char] = 1
+        }
+    }
+    
+    func sortedByValue() -> [Self.Element] {
+        self.sorted(by: { prev, curr in
+            prev.value > curr.value
+        })
+    }
+}
