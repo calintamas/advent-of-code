@@ -11,6 +11,10 @@ extension [Int] {
     func sum() -> Int {
         return self.reduce(0, +)
     }
+    
+    func multiply() -> Int {
+        return self.reduce(1, *)
+    }
 }
 
 extension Array {
