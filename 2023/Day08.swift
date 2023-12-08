@@ -43,7 +43,13 @@ struct Day08: AdventDay {
     }
     
     mutating func p1() -> String {
-        var node = map["AAA"]!
+        let count = countStepsFrom(start: map["AAA"]!) { $0.key == "ZZZ"}
+        
+        return "\(count)"
+    }
+    
+    func countStepsFrom(start: Node, predicate: (_ node: Node) -> Bool) -> Int {
+        var node = start
                 
         var idx = 0
         var stepCount = 0
@@ -65,12 +71,26 @@ struct Day08: AdventDay {
             } else {
                 idx += 1
             }
-        } while node.key != "ZZZ"
+        } while !predicate(node)
         
-        return "\(stepCount)"
+        return stepCount
     }
     
     mutating func p2() -> String {
-        return ""
+        var nodes: [Node] = []
+        
+        for node in map {
+            if node.key.hasSuffix("A") {
+                nodes.append(node.value)
+            }
+        }
+        
+        var counts: [Int] = []
+        for node in nodes {
+            let count = countStepsFrom(start: node) { $0.key.hasSuffix("Z") }
+            counts.append(count)
+        }
+    
+        return "\(counts.lcm())"
     }
 }

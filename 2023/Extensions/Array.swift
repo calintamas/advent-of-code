@@ -15,6 +15,13 @@ extension [Int] {
     func multiply() -> Int {
         return self.reduce(1, *)
     }
+    
+    func lcm() -> Int {
+        guard let first = self.first else {
+            return 0
+        }
+        return self.dropFirst().reduce(into: first) { $0 = $0.lcm(with: $1) }
+    }
 }
 
 extension Array {
