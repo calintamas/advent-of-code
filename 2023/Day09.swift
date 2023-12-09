@@ -44,9 +44,23 @@ struct Day09: AdventDay {
         let next = values[safe: idx + 1] ?? [0]
         
         var updated = values.copy()
-        updated[idx] = [current.last! + next.last!]
+        updated[idx] = [current.last! + next.last!] // keep only last value
                 
         return nextItemFor(values: updated, idx: idx - 1)
+    }
+    
+    func prevItemFor(values: [[Int]], idx: Int) -> Int {
+        if idx < 0 {
+            return values.first!.first!
+        }
+        
+        let current = values[idx]
+        let next = values[safe: idx + 1] ?? [0]
+        
+        var updated = values.copy()
+        updated[idx] = [current.first! - next.first!] // keep only first value
+                
+        return prevItemFor(values: updated, idx: idx - 1)
     }
     
     mutating func p1() -> String {
@@ -63,6 +77,15 @@ struct Day09: AdventDay {
     }
     
     mutating func p2() -> String {
-        return ""
+        var prevItems: [Int] = []
+        
+        for values in data {
+            let all = [values] + computeFiniteDiffs(values: values)
+            let prevItem = prevItemFor(values: all, idx: all.count - 1)
+            prevItems.append(prevItem)
+        }
+        
+        let sum = prevItems.sum()
+        return "\(sum)"
     }
 }
