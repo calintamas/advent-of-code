@@ -25,6 +25,10 @@ extension [Int] {
 }
 
 extension Array {
+    func copy() -> Self {
+        self.map({ $0 })
+    }
+    
     subscript(safe index: Index) -> Element? {
         indices.contains(index) ? self[index] : nil
     }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FE031EAC2B2456A4004D1D78 /* Day09.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE031EAB2B2456A4004D1D78 /* Day09.swift */; };
 		FE13C84E2B1F336400820966 /* Day05.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE13C84D2B1F336400820966 /* Day05.swift */; };
 		FE49BDD62B20C17900DF207E /* Day06.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE49BDD52B20C17900DF207E /* Day06.swift */; };
 		FE9097622B19D32800F442F6 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9097612B19D32700F442F6 /* main.swift */; };
@@ -36,6 +37,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		FE031EAB2B2456A4004D1D78 /* Day09.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day09.swift; sourceTree = "<group>"; };
+		FE031EAD2B2456B7004D1D78 /* day09.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = day09.txt; sourceTree = "<group>"; };
 		FE13C84D2B1F336400820966 /* Day05.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day05.swift; sourceTree = "<group>"; };
 		FE13C84F2B1F336D00820966 /* day05.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = day05.txt; sourceTree = "<group>"; };
 		FE13C8502B1F341500820966 /* scratchpad.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = scratchpad.txt; sourceTree = "<group>"; };
@@ -92,6 +95,7 @@
 				FE49BDD52B20C17900DF207E /* Day06.swift */,
 				FEE0D75F2B221ECC00788480 /* Day07.swift */,
 				FECC3DA22B22FF48005B149C /* Day08.swift */,
+				FE031EAB2B2456A4004D1D78 /* Day09.swift */,
 				FE90975E2B19C7F400F442F6 /* day01.txt */,
 				FEB36F7D2B1C80E4007F5C9A /* day02.txt */,
 				FEF553912B1CDC7F00143750 /* day03.txt */,
@@ -100,6 +104,7 @@
 				FE49BDD72B20C19000DF207E /* day06.txt */,
 				FEE0D7612B221ED700788480 /* day07.txt */,
 				FECC3DA42B22FF54005B149C /* day08.txt */,
+				FE031EAD2B2456B7004D1D78 /* day09.txt */,
 				FE13C8502B1F341500820966 /* scratchpad.txt */,
 				FE9097612B19D32700F442F6 /* main.swift */,
 				FEED82762B1DFEF000317775 /* test */,
@@ -228,6 +233,7 @@
 				FEB36F7C2B1C8081007F5C9A /* Array.swift in Sources */,
 				FE9097642B19D5E900F442F6 /* Day01.swift in Sources */,
 				FEB36F7A2B1C803F007F5C9A /* String.swift in Sources */,
+				FE031EAC2B2456A4004D1D78 /* Day09.swift in Sources */,
 				FEED82622B1DFD3800317775 /* Day04.swift in Sources */,
 				FE13C84E2B1F336400820966 /* Day05.swift in Sources */,
 				FE49BDD62B20C17900DF207E /* Day06.swift in Sources */,

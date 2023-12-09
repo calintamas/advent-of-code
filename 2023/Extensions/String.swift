@@ -24,6 +24,10 @@ extension String {
         Int(self)!
     }
     
+    func extractIntValues() -> [Int] {
+        self.splitByWhiteSpace().map({ $0.toInt() })
+    }
+    
     subscript(index: Int) -> Character? {
         guard index >= 0, index < count else {
             return nil // Return nil for out-of-bounds access
