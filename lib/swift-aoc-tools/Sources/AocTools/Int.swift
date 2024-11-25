@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension Int {
+public extension Int {
     func pow(exponent: Int) -> Int {
         var res = 1
         for _ in 0..<exponent {

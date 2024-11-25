@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import AocTools
 
 struct Day09: AdventDay {
     var data: [[Int]] = []

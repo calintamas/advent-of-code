@@ -7,6 +7,7 @@
 
 import Foundation
 import RegexBuilder
+import AocTools
 
 typealias RGB = (red: Int, green: Int, blue: Int)
 

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import AocTools
 
 struct Scratchcard {
     var winning: [Int]

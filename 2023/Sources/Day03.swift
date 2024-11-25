@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import AocTools
 
 struct Point: Equatable {
     var x: Int

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import AocTools
 
 enum Direction {
     case north

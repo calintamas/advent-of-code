@@ -7,6 +7,7 @@
 
 import Foundation
 import RegexBuilder
+import AocTools
 
 struct Node {
     var key: String

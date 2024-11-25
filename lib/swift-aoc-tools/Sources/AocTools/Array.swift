@@ -7,7 +7,17 @@
 
 import Foundation
 
-extension [Int] {
+public extension Array {
+    func copy() -> Self {
+        self.map({ $0 })
+    }
+    
+    subscript(safe index: Index) -> Element? {
+        indices.contains(index) ? self[index] : nil
+    }
+}
+
+public extension [Int] {
     func sum() -> Int {
         return self.reduce(0, +)
     }
@@ -24,17 +34,7 @@ extension [Int] {
     }
 }
 
-extension Array {
-    func copy() -> Self {
-        self.map({ $0 })
-    }
-    
-    subscript(safe index: Index) -> Element? {
-        indices.contains(index) ? self[index] : nil
-    }
-}
-
-extension [Character: Int] {
+public extension [Character: Int] {
     mutating func seen(char: Character) {
         if let val = self[char] {
             self[char] = val + 1

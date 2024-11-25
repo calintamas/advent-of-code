@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import AocTools
 
 func lineToArray(line: String) -> [Int] {
     line.splitByWhiteSpace().map({ $0.toInt() })

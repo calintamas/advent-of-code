@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import AocTools
 
 enum Kind: String, Comparable, CaseIterable {
     static func < (lhs: Kind, rhs: Kind) -> Bool {

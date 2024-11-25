@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import AocTools
 
 struct Day01: AdventDay {
     let lines: Array<String>

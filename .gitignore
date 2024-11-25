@@ -3,4 +3,4 @@ xcuserdata/
 .DS_Store
 
 ## inputs
-*.txt
+*/Input/*.txt

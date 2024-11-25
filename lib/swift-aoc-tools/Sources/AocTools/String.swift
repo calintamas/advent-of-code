@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension String {
+public extension String {
     func splitByLine() -> [String] {
         self.components(separatedBy: "\n").filter({ !$0.isEmpty })
     }

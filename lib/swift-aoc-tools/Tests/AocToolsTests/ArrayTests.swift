@@ -1,11 +1,5 @@
-//
-//  test.swift
-//  test
-//
-//  Created by Calin Tamas on 04.12.2023.
-//
-
 import XCTest
+@testable import AocTools
 
 final class ArrayTests: XCTestCase {
     func testSum() {

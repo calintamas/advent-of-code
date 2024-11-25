@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import AocTools
 
 struct Race {
     let time: Int
