@@ -50,20 +50,19 @@ fn total_distance(mut left: Vec<u64>, mut right: Vec<u64>) -> i64 {
 }
 
 fn similarity_score(left: Vec<u64>, right: Vec<u64>) -> u64 {
-    let mut scores: Vec<u64> = Vec::new();
+    let counts: HashMap<u64, u64> = right
+        .iter()
+        // accumulate into a HashMap
+        .fold(HashMap::new(), |mut acc, &right_item| {
+            // .or_insert returns a mutable reference to the value in entry
+            // * used to dereference it
+            *acc.entry(right_item).or_insert(0) += 1;
+            acc
+        });
 
-    let mut map: HashMap<u64, u64> = HashMap::new();
-    for &right_item in right.iter() {
-        *map.entry(right_item).or_insert(0) += 1
-    }
-
-    for left_item in left.iter() {
-        if let Some(count) = map.get(left_item) {
-            scores.push(left_item * count);
-        }
-    }
-
-    return scores.iter().sum();
+    left.iter()
+        .map(|&left_item| left_item * counts.get(&left_item).unwrap_or(&0))
+        .sum()
 }
 
 #[test]
