@@ -26,8 +26,6 @@ impl AdventDay for Day01 {
             self.left.push(values[0]);
             self.right.push(values[1]);
         }
-        self.left.sort(); // sort in place
-        self.right.sort();
     }
 
     fn p1(&self) -> String {
@@ -41,21 +39,14 @@ impl AdventDay for Day01 {
     }
 }
 
-fn total_distance(left: Vec<u64>, right: Vec<u64>) -> i64 {
-    let mut diffs: Vec<i64> = Vec::new();
+fn total_distance(mut left: Vec<u64>, mut right: Vec<u64>) -> i64 {
+    left.sort(); // sort in place
+    right.sort();
 
-    for (index, left_item) in left.iter().enumerate() {
-        if let Some(right_item) = right.get(index) {
-            diffs.push(*left_item as i64 - *right_item as i64);
-        } else {
-            eprintln!("Index {} out of bounds", index);
-        }
-    }
-
-    diffs.iter_mut().for_each(|x| *x = x.abs());
-
-    let sum: i64 = diffs.iter().sum();
-    return sum;
+    left.iter()
+        .enumerate()
+        .map(|(idx, &left_item)| left_item.abs_diff(right[idx]) as i64)
+        .sum()
 }
 
 fn similarity_score(left: Vec<u64>, right: Vec<u64>) -> u64 {
