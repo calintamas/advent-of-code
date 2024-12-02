@@ -39,13 +39,13 @@ impl AdventDay for Day01 {
     }
 }
 
-fn total_distance(mut left: Vec<u64>, mut right: Vec<u64>) -> i64 {
+fn total_distance(mut left: Vec<u64>, mut right: Vec<u64>) -> u64 {
     left.sort(); // sort in place
     right.sort();
 
     left.iter()
         .enumerate()
-        .map(|(idx, &left_item)| left_item.abs_diff(right[idx]) as i64)
+        .map(|(idx, &left_item)| left_item.abs_diff(right[idx]))
         .sum()
 }
 
