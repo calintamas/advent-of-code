@@ -56,7 +56,7 @@ impl AdventDay for Day04 {
     }
 
     fn p2(&self) -> String {
-        "".to_string()
+        count_x_mas(&self.grid).to_string()
     }
 }
 
@@ -126,6 +126,38 @@ fn count_xmas(grid: &Grid<char>) -> usize {
     return count;
 }
 
+/*
+    M.S
+    .A.
+    M.S
+*/
+fn count_x_mas(grid: &Grid<char>) -> usize {
+    let mut count = 0;
+    for x in 1..grid.rows - 1 {
+        for y in 1..grid.cols - 1 {
+            if grid.get(x, y) == Some(&'A') {
+                // top-left bottom-right diagonal
+                let a1 =
+                    grid.get(x - 1, y - 1) == Some(&'M') && grid.get(x + 1, y + 1) == Some(&'S');
+                let a2 =
+                    grid.get(x - 1, y - 1) == Some(&'S') && grid.get(x + 1, y + 1) == Some(&'M');
+
+                // top-right bottom-left diagonal
+                let b1 =
+                    grid.get(x - 1, y + 1) == Some(&'M') && grid.get(x + 1, y - 1) == Some(&'S');
+                let b2 =
+                    grid.get(x - 1, y + 1) == Some(&'S') && grid.get(x + 1, y - 1) == Some(&'M');
+
+                if (a1 || a2) && (b1 || b2) {
+                    count += 1;
+                }
+            }
+        }
+    }
+
+    return count;
+}
+
 #[test]
 fn test_count_xmas() {
     let input = "MMMSXXMASM
@@ -141,4 +173,21 @@ MXMXAXMASX";
     let mut day = Day04::new();
     day.parse(input);
     assert_eq!(count_xmas(&day.grid), 18);
+}
+
+#[test]
+fn test_count_x_mas() {
+    let input = "MMMSXXMASM
+MSAMXMSMSA
+AMXSXMAAMM
+MSAMASMSMX
+XMASAMXAMM
+XXAMMXXAMA
+SMSMSASXSS
+SAXAMASAAA
+MAMMMXMMMM
+MXMXAXMASX";
+    let mut day = Day04::new();
+    day.parse(input);
+    assert_eq!(count_x_mas(&day.grid), 9);
 }
