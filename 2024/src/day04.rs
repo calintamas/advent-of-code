@@ -1,0 +1,144 @@
+use crate::advent_day::AdventDay;
+
+pub struct Day04 {
+    grid: Grid<char>,
+}
+
+impl Day04 {
+    pub fn new() -> Self {
+        Self {
+            grid: Grid::new(0, 0),
+        }
+    }
+}
+
+#[derive(Debug)]
+struct Grid<T> {
+    rows: usize,
+    cols: usize,
+    data: Vec<T>,
+}
+
+impl<T> Grid<T>
+where
+    T: Default + Clone + Copy,
+{
+    fn new(rows: usize, cols: usize) -> Self {
+        Self {
+            rows,
+            cols,
+            data: vec![T::default(); rows * cols],
+        }
+    }
+
+    fn get(&self, row: usize, col: usize) -> Option<&T> {
+        if row < self.rows && col < self.cols {
+            self.data.get(row * self.cols + col)
+        } else {
+            None
+        }
+    }
+
+    fn set(&mut self, row: usize, col: usize, value: T) {
+        if row < self.rows && col < self.cols {
+            self.data[row * self.cols + col] = value;
+        }
+    }
+}
+
+impl AdventDay for Day04 {
+    fn parse(&mut self, input: &str) {
+        self.grid = parse(input);
+    }
+
+    fn p1(&self) -> String {
+        count_xmas(&self.grid).to_string()
+    }
+
+    fn p2(&self) -> String {
+        "".to_string()
+    }
+}
+
+fn parse(input: &str) -> Grid<char> {
+    let rows = input.lines().count();
+    let cols = input
+        .lines()
+        .next()
+        .unwrap()
+        .split("")
+        .filter_map(|x| x.parse::<char>().ok())
+        .count();
+    let mut grid = Grid::<char>::new(rows, cols);
+
+    for (row, line) in input.lines().enumerate() {
+        let chars = line.split("").filter_map(|x| x.parse::<char>().ok());
+
+        for (col, value) in chars.enumerate() {
+            grid.set(row, col, value);
+        }
+    }
+    return grid;
+}
+
+fn count_xmas(grid: &Grid<char>) -> usize {
+    let directions = [
+        (0, 1),   // Right
+        (0, -1),  // Left
+        (1, 0),   // Down
+        (-1, 0),  // Up
+        (1, 1),   // Down-right
+        (-1, -1), // Up-left
+        (1, -1),  // Down-left
+        (-1, 1),  // Up-right
+    ];
+
+    let word = "XMAS";
+    let word_chars: Vec<char> = word.chars().collect();
+
+    let mut count = 0;
+
+    for x in 0..grid.rows {
+        for y in 0..grid.cols {
+            for (dx, dy) in &directions {
+                let mut found = true;
+                // slide a "window" of word size across the grid
+                // in all valid directions
+                for i in 0..word.len() {
+                    let nx = x as isize + i as isize * dx;
+                    let ny = y as isize + i as isize * dy;
+
+                    if let Some(val) = grid.get(nx as usize, ny as usize) {
+                        if val != &word_chars[i] {
+                            found = false
+                        }
+                    } else {
+                        found = false
+                    }
+                }
+                if found {
+                    count += 1;
+                }
+            }
+        }
+    }
+
+    return count;
+}
+
+#[test]
+fn test_count_xmas() {
+    let input = "MMMSXXMASM
+MSAMXMSMSA
+AMXSXMAAMM
+MSAMASMSMX
+XMASAMXAMM
+XXAMMXXAMA
+SMSMSASXSS
+SAXAMASAAA
+MAMMMXMMMM
+MXMXAXMASX";
+    let mut day = Day04::new();
+    day.parse(input);
+    assert_eq!(count_xmas(&day.grid), 18);
+}
