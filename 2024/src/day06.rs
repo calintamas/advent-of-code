@@ -57,7 +57,8 @@ impl AdventDay for Day06 {
         for pos in route.iter().skip(1) {
             let mut grid = self.grid.clone();
             grid.set(pos.x, pos.y, '@'); // <-- custom obstacle
-            if did_loop(grid, self.start_pos) {
+            let did_loop = walk(grid, self.start_pos).2;
+            if did_loop {
                 obstacles.insert(*pos);
             }
         }
@@ -66,7 +67,7 @@ impl AdventDay for Day06 {
     }
 }
 
-fn walk(mut grid: Grid<char>, start_pos: Pos) -> (usize, Vec<Pos>) {
+fn walk(mut grid: Grid<char>, start_pos: Pos) -> (usize, Vec<Pos>, bool) {
     let mut pos = start_pos;
     let mut direction = '^';
 
@@ -76,64 +77,8 @@ fn walk(mut grid: Grid<char>, start_pos: Pos) -> (usize, Vec<Pos>) {
     let mut visited: HashSet<Pos> = HashSet::new();
     visited.insert(start_pos);
 
-    while grid.get(pos.x, pos.y).is_some() {
-        let new_pos: Option<Pos> = match direction {
-            '^' => Some((pos.x as isize - 1, pos.y as isize)),
-            '>' => Some((pos.x as isize, pos.y as isize + 1)),
-            'v' => Some((pos.x as isize + 1, pos.y as isize)),
-            '<' => Some((pos.x as isize, pos.y as isize - 1)),
-            _ => None,
-        }
-        .and_then(|(x, y)| {
-            // make sure coords are positive
-            if x >= 0 && y >= 0 {
-                Some(Pos {
-                    x: x as usize,
-                    y: y as usize,
-                })
-            } else {
-                None
-            }
-        });
-        let new_direction: Option<char> = match direction {
-            '^' => Some('>'),
-            '>' => Some('v'),
-            'v' => Some('<'),
-            '<' => Some('^'),
-            _ => None,
-        };
-
-        if let (Some(new_pos), Some(new_direction)) = (new_pos, new_direction) {
-            if let Some(&new_val) = grid.get(new_pos.x, new_pos.y) {
-                if new_val == '#' {
-                    direction = new_direction;
-                } else {
-                    grid.set(pos.x, pos.y, '.');
-                    grid.set(new_pos.x, new_pos.y, direction);
-                    pos = new_pos;
-                    visited.insert(new_pos);
-                    route.push(new_pos);
-                }
-            } else {
-                break;
-            }
-        } else {
-            break;
-        }
-    }
-
-    (visited.len(), route)
-}
-
-fn did_loop(mut grid: Grid<char>, start_pos: Pos) -> bool {
-    let mut pos = start_pos;
-    let mut direction = '^';
-
-    let mut visited: HashSet<(Pos, char)> = HashSet::new();
-    visited.insert((start_pos, direction));
-
-    let mut route = Vec::<Pos>::new();
-    route.push(start_pos);
+    let mut visited_with_dir: HashSet<(Pos, char)> = HashSet::new();
+    visited_with_dir.insert((start_pos, direction));
 
     while grid.get(pos.x, pos.y).is_some() {
         let new_pos: Option<Pos> = match direction {
@@ -167,13 +112,14 @@ fn did_loop(mut grid: Grid<char>, start_pos: Pos) -> bool {
                 if new_val == '#' || new_val == '@' {
                     direction = new_direction;
                 } else {
-                    if !visited.insert((new_pos, direction)) {
+                    if !visited_with_dir.insert((new_pos, direction)) {
                         // was visited, same direction => loop
-                        return true;
+                        return (visited.len(), route, true);
                     }
                     grid.set(pos.x, pos.y, '.');
                     grid.set(new_pos.x, new_pos.y, direction);
                     pos = new_pos;
+                    visited.insert(new_pos);
                     route.push(new_pos);
                 }
             } else {
@@ -184,7 +130,7 @@ fn did_loop(mut grid: Grid<char>, start_pos: Pos) -> bool {
         }
     }
 
-    return false;
+    (visited.len(), route, false)
 }
 
 #[test]
