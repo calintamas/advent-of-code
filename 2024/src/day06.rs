@@ -58,40 +58,41 @@ impl AdventDay for Day06 {
 fn walk(mut grid: Grid<char>, start_pos: Pos) -> usize {
     let mut pos = start_pos;
     let mut direction = '^';
+
     let mut visited: HashSet<Pos> = HashSet::new();
     visited.insert(start_pos);
 
     while grid.get(pos.x, pos.y).is_some() {
-        if direction == '^' {
-            if (pos.x as isize) - 1 < 0 {
-                break;
-            }
-            let new_pos = Pos {
-                x: pos.x - 1,
-                y: pos.y,
-            };
-            if let Some(&new_val) = grid.get(new_pos.x, new_pos.y) {
-                if new_val == '#' {
-                    direction = '>'
-                } else {
-                    grid.set(pos.x, pos.y, '.');
-                    grid.set(new_pos.x, new_pos.y, direction);
-                    pos = new_pos;
-                    visited.insert(new_pos);
-                }
-            } else {
-                break;
-            }
+        let new_pos: Option<Pos> = match direction {
+            '^' => Some((pos.x as isize - 1, pos.y as isize)),
+            '>' => Some((pos.x as isize, pos.y as isize + 1)),
+            'v' => Some((pos.x as isize + 1, pos.y as isize)),
+            '<' => Some((pos.x as isize, pos.y as isize - 1)),
+            _ => None,
         }
+        .and_then(|(x, y)| {
+            // make sure coords are positive
+            if x >= 0 && y >= 0 {
+                Some(Pos {
+                    x: x as usize,
+                    y: y as usize,
+                })
+            } else {
+                None
+            }
+        });
+        let new_direction: Option<char> = match direction {
+            '^' => Some('>'),
+            '>' => Some('v'),
+            'v' => Some('<'),
+            '<' => Some('^'),
+            _ => None,
+        };
 
-        if direction == '>' {
-            let new_pos = Pos {
-                x: pos.x,
-                y: pos.y + 1,
-            };
+        if let (Some(new_pos), Some(new_direction)) = (new_pos, new_direction) {
             if let Some(&new_val) = grid.get(new_pos.x, new_pos.y) {
                 if new_val == '#' {
-                    direction = 'v'
+                    direction = new_direction;
                 } else {
                     grid.set(pos.x, pos.y, '.');
                     grid.set(new_pos.x, new_pos.y, direction);
@@ -101,47 +102,8 @@ fn walk(mut grid: Grid<char>, start_pos: Pos) -> usize {
             } else {
                 break;
             }
-        }
-
-        if direction == 'v' {
-            let new_pos = Pos {
-                x: pos.x + 1,
-                y: pos.y,
-            };
-            if let Some(&new_val) = grid.get(new_pos.x, new_pos.y) {
-                if new_val == '#' {
-                    direction = '<'
-                } else {
-                    grid.set(pos.x, pos.y, '.');
-                    grid.set(new_pos.x, new_pos.y, direction);
-                    pos = new_pos;
-                    visited.insert(new_pos);
-                }
-            } else {
-                break;
-            }
-        }
-
-        if direction == '<' {
-            if (pos.y as isize) - 1 < 0 {
-                break;
-            }
-            let new_pos = Pos {
-                x: pos.x,
-                y: pos.y - 1,
-            };
-            if let Some(&new_val) = grid.get(new_pos.x, new_pos.y) {
-                if new_val == '#' {
-                    direction = '^'
-                } else {
-                    grid.set(pos.x, pos.y, '.');
-                    grid.set(new_pos.x, new_pos.y, direction);
-                    pos = new_pos;
-                    visited.insert(new_pos);
-                }
-            } else {
-                break;
-            }
+        } else {
+            break;
         }
     }
 
