@@ -33,6 +33,7 @@ where
         }
     }
 
+    #[allow(dead_code)]
     pub fn pretty_print(&self) {
         for row in 0..self.rows {
             for col in 0..self.cols {
