@@ -1,4 +1,6 @@
-#[derive(Debug)]
+use std::fmt;
+
+#[derive(Debug, Clone)]
 pub struct Grid<T> {
     pub rows: usize,
     pub cols: usize,
@@ -7,7 +9,7 @@ pub struct Grid<T> {
 
 impl<T> Grid<T>
 where
-    T: Default + Clone + Copy,
+    T: Default + Clone + Copy + fmt::Display,
 {
     pub fn new(rows: usize, cols: usize) -> Self {
         Self {
@@ -28,6 +30,15 @@ where
     pub fn set(&mut self, row: usize, col: usize, value: T) {
         if row < self.rows && col < self.cols {
             self.data[row * self.cols + col] = value;
+        }
+    }
+
+    pub fn pretty_print(&self) {
+        for row in 0..self.rows {
+            for col in 0..self.cols {
+                print!("{} ", self.get(row, col).unwrap());
+            }
+            println!();
         }
     }
 }
