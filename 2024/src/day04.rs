@@ -1,4 +1,4 @@
-use crate::advent_day::AdventDay;
+use crate::{advent_day::AdventDay, grid::Grid};
 
 pub struct Day04 {
     grid: Grid<char>,
@@ -8,40 +8,6 @@ impl Day04 {
     pub fn new() -> Self {
         Self {
             grid: Grid::new(0, 0),
-        }
-    }
-}
-
-#[derive(Debug)]
-struct Grid<T> {
-    rows: usize,
-    cols: usize,
-    data: Vec<T>,
-}
-
-impl<T> Grid<T>
-where
-    T: Default + Clone + Copy,
-{
-    fn new(rows: usize, cols: usize) -> Self {
-        Self {
-            rows,
-            cols,
-            data: vec![T::default(); rows * cols],
-        }
-    }
-
-    fn get(&self, row: usize, col: usize) -> Option<&T> {
-        if row < self.rows && col < self.cols {
-            self.data.get(row * self.cols + col)
-        } else {
-            None
-        }
-    }
-
-    fn set(&mut self, row: usize, col: usize, value: T) {
-        if row < self.rows && col < self.cols {
-            self.data[row * self.cols + col] = value;
         }
     }
 }
@@ -62,19 +28,12 @@ impl AdventDay for Day04 {
 
 fn parse(input: &str) -> Grid<char> {
     let rows = input.lines().count();
-    let cols = input
-        .lines()
-        .next()
-        .unwrap()
-        .split("")
-        .filter_map(|x| x.parse::<char>().ok())
-        .count();
+    let cols = input.lines().next().unwrap().chars().count();
+
     let mut grid = Grid::<char>::new(rows, cols);
 
     for (row, line) in input.lines().enumerate() {
-        let chars = line.split("").filter_map(|x| x.parse::<char>().ok());
-
-        for (col, value) in chars.enumerate() {
+        for (col, value) in line.chars().enumerate() {
             grid.set(row, col, value);
         }
     }
