@@ -38,7 +38,15 @@ impl AdventDay for Day07 {
     }
 
     fn p2(&self) -> String {
-        "".to_string()
+        self.data
+            .iter()
+            .fold(0, |mut acc, item| {
+                if check_numbers(item.0, item.1.clone(), vec!['+', '*', '|']) {
+                    acc += item.0;
+                }
+                acc
+            })
+            .to_string()
     }
 }
 
@@ -73,6 +81,7 @@ fn check_numbers(result: isize, numbers: Vec<isize>, operators: Vec<char>) -> bo
             match op {
                 Some('*') => res *= num,
                 Some('+') => res += num,
+                Some('|') => res = format!("{}{}", res, num).parse::<isize>().unwrap(),
                 _ => {}
             }
         }
@@ -99,6 +108,10 @@ fn test_check_numbers() {
         check_numbers(21037, vec![9, 7, 18, 13], vec!['+', '*']),
         false
     );
+    assert_eq!(
+        check_numbers(192, vec![17, 8, 14], vec!['+', '*', '|']),
+        true
+    );
 }
 
 #[test]
@@ -116,4 +129,21 @@ fn test_p1() {
     let mut day = Day07::new();
     day.parse(input);
     assert_eq!(day.p1(), "3749")
+}
+
+#[test]
+fn test_p2() {
+    let input = "190: 10 19
+3267: 81 40 27
+83: 17 5
+156: 15 6
+7290: 6 8 6 15
+161011: 16 10 13
+192: 17 8 14
+21037: 9 7 18 13
+292: 11 6 16 20";
+
+    let mut day = Day07::new();
+    day.parse(input);
+    assert_eq!(day.p2(), "11387")
 }
