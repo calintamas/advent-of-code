@@ -51,19 +51,19 @@ impl AdventDay for Day07 {
 }
 
 fn get_combinations(operators: Vec<char>, n: usize) -> Vec<String> {
-    if n == 0 {
-        return vec!["".to_string()];
-    }
+    let mut combinations = vec!["".to_string()];
 
-    let mut combinations = Vec::new();
-    let smaller_combinations = get_combinations(operators.clone(), n - 1);
-
-    for op in operators {
-        for comb in &smaller_combinations {
-            let mut new_comb = comb.clone();
-            new_comb.push(op);
-            combinations.push(new_comb);
-        }
+    for _ in 0..n {
+        combinations = combinations
+            .into_iter()
+            .flat_map(|comb| {
+                operators
+                    .iter()
+                    // using `move` to transfer the ownership of the `comb` string into the closure
+                    // making the closure "self-contained"
+                    .map(move |&op| format!("{comb}{op}"))
+            })
+            .collect();
     }
 
     combinations
@@ -97,7 +97,7 @@ fn check_numbers(result: isize, numbers: Vec<isize>, operators: Vec<char>) -> bo
 #[test]
 fn test_combinations() {
     let combinations = get_combinations(vec!['+', '*'], 2);
-    assert_eq!(combinations, vec!["++", "*+", "+*", "**"]);
+    assert_eq!(combinations, vec!["++", "+*", "*+", "**"]);
 }
 
 #[test]
