@@ -11,7 +11,9 @@ mod day04;
 mod day05;
 mod day06;
 mod day07;
+mod day08;
 mod grid;
+mod point;
 
 fn main() {
     let mut args = env::args().skip(1);
@@ -34,6 +36,7 @@ fn run_day(day: u32, input: &str) {
         5 => Box::new(day05::Day05::new()),
         6 => Box::new(day06::Day06::new()),
         7 => Box::new(day07::Day07::new()),
+        8 => Box::new(day08::Day08::new()),
         _ => {
             println!("Day not implemented");
             return;
