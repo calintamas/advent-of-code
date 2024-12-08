@@ -37,10 +37,14 @@ impl AdventDay for Day08 {
     fn p1(&self) -> String {
         let mut antinodes: HashSet<Point> = HashSet::new();
         for antennas in self.antennas.values() {
+            // Take every combination of 2 antennas of the same frequency
+            // and attempt to place an antinode at "offset" distance from second antenna.
             for &first in antennas {
                 for &second in antennas {
                     if first != second {
-                        let antinode = second * 2 - first;
+                        let offset = second - first; // directional difference between the two points
+                        let antinode = second + offset;
+
                         if self
                             .grid
                             .get(antinode.x as usize, antinode.y as usize)
@@ -56,7 +60,28 @@ impl AdventDay for Day08 {
     }
 
     fn p2(&self) -> String {
-        "".to_string()
+        let mut antinodes: HashSet<Point> = HashSet::new();
+        for antennas in self.antennas.values() {
+            // Same as above, but do it repeatedly until out-of-grid (to account for resonance)
+            for &first in antennas {
+                for &second in antennas {
+                    if first != second {
+                        let offset = second - first;
+                        let mut antinode = second;
+
+                        while self
+                            .grid
+                            .get(antinode.x as usize, antinode.y as usize)
+                            .is_some()
+                        {
+                            antinodes.insert(antinode);
+                            antinode += offset;
+                        }
+                    }
+                }
+            }
+        }
+        antinodes.len().to_string()
     }
 }
 
@@ -77,4 +102,23 @@ fn test_p1() {
     let mut day = Day08::new();
     day.parse(input);
     assert_eq!(day.p1(), "14");
+}
+
+#[test]
+fn test_p2() {
+    let input = "............
+........0...
+.....0......
+.......0....
+....0.......
+......A.....
+............
+............
+........A...
+.........A..
+............
+............";
+    let mut day = Day08::new();
+    day.parse(input);
+    assert_eq!(day.p2(), "34");
 }
