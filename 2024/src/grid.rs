@@ -38,9 +38,9 @@ where
         }
     }
 
-    pub fn bfs<F>(&self, start: Point, is_valid: F) -> Vec<Point>
+    pub fn bfs<F>(&self, start: Point, mut is_valid: F) -> Vec<Point>
     where
-        F: Fn(Point, Point) -> bool,
+        F: FnMut(Point, Point, &HashSet<Point>) -> bool,
     {
         let directions = [
             (0, 1),  // Right
@@ -65,14 +65,11 @@ where
                     y: current.y + dy,
                 };
 
-                if visited.contains(&neighbor) {
-                    continue;
-                }
                 if self.get(neighbor.x as usize, neighbor.y as usize).is_none() {
                     continue;
                 }
 
-                if is_valid(current, neighbor) {
+                if is_valid(current, neighbor, &visited) {
                     queue.push_back(neighbor);
                     visited.insert(neighbor);
                 }
