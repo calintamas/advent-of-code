@@ -1,4 +1,9 @@
-use std::fmt;
+use std::{
+    collections::{HashSet, VecDeque},
+    fmt,
+};
+
+use crate::point::Point;
 
 #[derive(Debug, Clone)]
 pub struct Grid<T> {
@@ -31,6 +36,50 @@ where
         if row < self.rows && col < self.cols {
             self.data[row * self.cols + col] = value;
         }
+    }
+
+    pub fn bfs<F>(&self, start: Point, is_valid: F) -> Vec<Point>
+    where
+        F: Fn(Point, Point) -> bool,
+    {
+        let directions = [
+            (0, 1),  // Right
+            (0, -1), // Left
+            (1, 0),  // Down
+            (-1, 0), // Up
+        ];
+
+        let mut visited = HashSet::new();
+        let mut queue = VecDeque::new();
+        let mut path = Vec::new();
+
+        queue.push_back(start);
+        visited.insert(start);
+
+        while let Some(current) = queue.pop_front() {
+            path.push(current);
+
+            for &(dx, dy) in &directions {
+                let neighbor = Point {
+                    x: current.x + dx,
+                    y: current.y + dy,
+                };
+
+                if visited.contains(&neighbor) {
+                    continue;
+                }
+                if self.get(neighbor.x as usize, neighbor.y as usize).is_none() {
+                    continue;
+                }
+
+                if is_valid(current, neighbor) {
+                    queue.push_back(neighbor);
+                    visited.insert(neighbor);
+                }
+            }
+        }
+
+        path
     }
 
     #[allow(dead_code)]
