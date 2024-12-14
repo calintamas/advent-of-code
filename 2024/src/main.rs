@@ -14,6 +14,7 @@ mod day07;
 mod day08;
 mod day09;
 mod day10;
+mod day12;
 mod grid;
 mod point;
 
@@ -41,6 +42,7 @@ fn run_day(day: u32, input: &str) {
         8 => Box::new(day08::Day08::new()),
         9 => Box::new(day09::Day09::new()),
         10 => Box::new(day10::Day10::new()),
+        12 => Box::new(day12::Day12::new()),
         _ => {
             println!("Day not implemented");
             return;
