@@ -5,6 +5,7 @@ use std::str::FromStr;
 
 mod advent_day;
 mod day01;
+mod day02;
 
 fn main() {
     let mut args = env::args().skip(1);
@@ -21,6 +22,7 @@ fn main() {
 fn run_day(day: u32, input: &str) {
     let mut advent_day: Box<dyn AdventDay> = match day {
         1 => Box::new(day01::Day01::new()),
+        2 => Box::new(day02::Day02::new()),
         _ => {
             println!("Day not implemented");
             return;
