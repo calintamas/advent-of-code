@@ -1,48 +1,35 @@
-use crate::advent_day::AdventDay;
+// --- Day 2: I Was Told There Would Be No Math ---
 
-pub struct Day02 {
-    boxes: Vec<Vec<usize>>,
+pub type Input = Vec<(usize, usize, usize)>;
+
+pub fn parse(input: &str) -> Input {
+    input
+        .lines()
+        .filter(|line| !line.is_empty())
+        .map(|line| {
+            let dims: Vec<usize> = line
+                .split("x")
+                .map(|x| x.parse::<usize>().unwrap())
+                .collect();
+            (dims[0], dims[1], dims[2])
+        })
+        .collect()
 }
 
-impl Day02 {
-    pub fn new() -> Self {
-        Self { boxes: Vec::new() }
-    }
+pub fn part1(input: &Input) -> String {
+    input
+        .iter()
+        .map(|(l, w, h)| wrapping_paper_needed(*l, *w, *h))
+        .sum::<usize>()
+        .to_string()
 }
 
-impl AdventDay for Day02 {
-    fn parse(&mut self, input: &str) {
-        self.boxes
-            .extend(input.lines().filter(|line| !line.is_empty()).map(|line| {
-                line.split("x")
-                    .map(|x| x.parse::<usize>().unwrap())
-                    .collect()
-            }));
-    }
-
-    fn p1(&self) -> String {
-        self.boxes
-            .iter()
-            .fold(0, |acc, item| {
-                let l = item[0];
-                let w = item[1];
-                let h = item[2];
-                acc + wrapping_paper_needed(l, w, h)
-            })
-            .to_string()
-    }
-
-    fn p2(&self) -> String {
-        self.boxes
-            .iter()
-            .fold(0, |acc, item| {
-                let l = item[0];
-                let w = item[1];
-                let h = item[2];
-                acc + ribbon_needed(l, w, h)
-            })
-            .to_string()
-    }
+pub fn part2(input: &Input) -> String {
+    input
+        .iter()
+        .map(|(l, w, h)| ribbon_needed(*l, *w, *h))
+        .sum::<usize>()
+        .to_string()
 }
 
 fn wrapping_paper_needed(l: usize, w: usize, h: usize) -> usize {
