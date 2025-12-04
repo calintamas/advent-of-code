@@ -3,6 +3,7 @@ use std::fs::read_to_string;
 use std::str::FromStr;
 
 mod day01;
+mod day02;
 
 fn main() {
     let mut args = env::args().skip(1);
@@ -27,6 +28,7 @@ macro_rules! run_solution {
 fn run_day(day: u32, input: &str) {
     match day {
         1 => run_solution!(day01, input),
+        2 => run_solution!(day02, input),
         _ => println!("Day not implemented"),
     }
 }
