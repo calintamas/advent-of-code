@@ -5,6 +5,7 @@ use std::str::FromStr;
 mod day01;
 mod day02;
 mod day03;
+mod day04;
 
 fn main() {
     let mut args = env::args().skip(1);
@@ -31,6 +32,7 @@ fn run_day(day: u32, input: &str) {
         1 => run_solution!(day01, input),
         2 => run_solution!(day02, input),
         3 => run_solution!(day03, input),
+        4 => run_solution!(day04, input),
         _ => println!("Day not implemented"),
     }
 }
