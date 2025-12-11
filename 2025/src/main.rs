@@ -9,6 +9,7 @@ mod day04;
 mod day05;
 mod day06;
 mod day07;
+mod day08;
 
 fn main() {
     let mut args = env::args().skip(1);
@@ -39,6 +40,7 @@ fn run_day(day: u32, input: &str) {
         5 => run_solution!(day05, input),
         6 => run_solution!(day06, input),
         7 => run_solution!(day07, input),
+        8 => run_solution!(day08, input),
         _ => println!("Day not implemented"),
     }
 }
