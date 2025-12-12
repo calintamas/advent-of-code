@@ -12,7 +12,7 @@ Examples:
 
 ```sh
 cargo run 1  # runs day 1
-cargo run 2  # runs day 2
+cargo run --release -- 1  # runs day 1 in release mode
 ```
 
 Input files are automatically loaded from `./input/day{xx}.txt`.

@@ -44,7 +44,7 @@ where
 
     pub fn for_each_neighbor_of<F>(&self, item: (usize, usize), mut cb: F)
     where
-        F: FnMut(Option<&T>, (isize, isize)),
+        F: FnMut(Option<&T>, (usize, usize)),
     {
         let directions: [(isize, isize); 8] = [
             (0, 1),   // Right
@@ -60,7 +60,7 @@ where
             let n_row = item.0 as isize + dx;
             let n_col = item.1 as isize + dy;
             let val = self.get(n_row as usize, n_col as usize);
-            cb(val, (n_row, n_col));
+            cb(val, (n_row as usize, n_col as usize));
         }
     }
 }
